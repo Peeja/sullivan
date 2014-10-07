@@ -1,4 +1,4 @@
-module DataValidator
+module Sullivan
   module Validations
     class KindOf
       def initialize(klass)

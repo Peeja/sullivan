@@ -1,4 +1,4 @@
-module DataValidator
+module Sullivan
   module Validations
     class StringMatching
       def initialize(regex, error: nil)

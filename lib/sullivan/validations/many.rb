@@ -1,4 +1,4 @@
-module DataValidator
+module Sullivan
   module Validations
     class Many
       def initialize(validation, at_least: nil, at_most: nil)

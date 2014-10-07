@@ -1,4 +1,4 @@
-module DataValidator
+module Sullivan
   module Validations
     class Optional
       def initialize(validation)

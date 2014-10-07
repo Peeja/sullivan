@@ -1,14 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'data_validator/version'
+require 'sullivan/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "data_validator"
-  spec.version       = DataValidator::VERSION
+  spec.name          = "sullivan"
+  spec.version       = Sullivan::VERSION
   spec.authors       = ["Peter Jaros"]
   spec.email         = ["peter.a.jaros@gmail.com"]
   spec.summary       = %q{A simple, composable way to validate the structure of data.}
+  spec.description   = %q{A simple, composable way to validate the structure of data. "Form ever follows function. This is the law." — Louis Henry Sullivan}
   spec.homepage      = ""
   spec.license       = "MIT"
 
