@@ -5,7 +5,7 @@ module Sullivan
 
   class DSL < BasicObject
     def method_missing(method_name, *args)
-      constant_name = ::ActiveSupport::Inflector.camelize(method_name)
+      constant_name = DSL.camelize(method_name.to_s)
 
       if ::Sullivan::Validations.const_defined?(constant_name)
         klass = ::Sullivan::Validations.const_get(constant_name)
@@ -14,12 +14,15 @@ module Sullivan
         super
       end
     end
+
+    def self.camelize(string)
+      string.split('_').map(&:capitalize).join
+    end
   end
 end
 
-require_dependency 'sullivan/validations/boolean.rb'
-require_dependency 'sullivan/validations/hash.rb'
-require_dependency 'sullivan/validations/kind_of.rb'
-require_dependency 'sullivan/validations/many.rb'
-require_dependency 'sullivan/validations/optional.rb'
-require_dependency 'sullivan/validations/string_matching.rb'
+require 'sullivan/validations/hash.rb'
+require 'sullivan/validations/kind_of.rb'
+require 'sullivan/validations/many.rb'
+require 'sullivan/validations/optional.rb'
+require 'sullivan/validations/string_matching.rb'

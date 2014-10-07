@@ -22,7 +22,13 @@ module Sullivan
 
     class StringHash < Hash
       def initialize(validations)
-        super validations.stringify_keys
+        super stringify_keys(validations)
+      end
+
+      private
+
+      def stringify_keys(hash)
+        hash.each_with_object({}) { |(k, v), h| h[k.to_s] = v }
       end
     end
   end
