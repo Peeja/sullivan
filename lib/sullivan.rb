@@ -1,6 +1,15 @@
 module Sullivan
   def self.validation(&block)
-    DSL.new.instance_eval(&block)
+    dsl = DSL.new
+
+    case block.arity
+    when 0
+      dsl.instance_eval(&block)
+    when 1
+      block.call(dsl)
+    else
+      raise ArgumentError.new("Sullivan.validation's block must have an arity of 0 or 1.")
+    end
   end
 
   class DSL < BasicObject
