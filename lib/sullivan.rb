@@ -13,12 +13,12 @@ module Sullivan
   end
 
   class DSL < BasicObject
-    def method_missing(method_name, *args)
+    def method_missing(method_name, *args, **kwargs)
       constant_name = DSL.camelize(method_name.to_s)
 
       if ::Sullivan::Validations.const_defined?(constant_name)
         klass = ::Sullivan::Validations.const_get(constant_name)
-        klass.new(*args)
+        klass.new(*args, **kwargs)
       else
         super
       end
